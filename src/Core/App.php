@@ -2,7 +2,7 @@
 
 namespace Src\Core;
 
-use Src\Http\Controllers\File\PDF2Text as FilePDF2Text;
+use Src\Http\Controllers\File\File;
 
 /**
 * Classe responsável por iniciar a aplicação
@@ -19,9 +19,11 @@ class App {
   public static function init(){
     try {
 
-      echo "<pre>"; print_r('teste'); echo "</pre>"; exit;
+      $obFile = new File('livro.epub');
 
-    } catch (\Exception $e) {
+      $obFile->changeExtension();
+
+    } catch (\Throwable $e) {
       echo "<pre>"; print_r($e); echo "</pre>"; exit;
     }
   }
