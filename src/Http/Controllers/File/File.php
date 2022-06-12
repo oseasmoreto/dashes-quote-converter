@@ -145,6 +145,10 @@ class File{
 
       $fileContent = fread($fFile, filesize($file));
 
+      $fileContent = str_replace(['“','”'], ['"','"'],$fileContent);
+      $fileContent = str_replace([',"','."'], [',"'."\n",'."'."\n"], $fileContent);
+      $fileContent = str_replace('</p><p class="block_14">', ' ', $fileContent);
+
       $obDocument = new DOMDocument();
 
       $obDocument->loadHTML($fileContent);
@@ -155,7 +159,7 @@ class File{
 
       $this->listFilesContent[$file] = $content;
     }
-
+    echo "<pre>"; print_r($this->listFilesContent); echo "</pre>"; exit;
     return $this;
   }
 }
