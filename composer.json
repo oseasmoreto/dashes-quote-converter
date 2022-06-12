@@ -1,0 +1,17 @@
+{
+    "name": "oseasmoreto/quotation-to-dash",
+    "description": "Project that converts quotes to dashes because my girlfriend has quotes agony in her books",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Oseas Moreto",
+            "email": "dev@oseasmoreto.com"
+        }
+    ],
+    "require": {}
+}

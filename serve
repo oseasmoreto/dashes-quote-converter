@@ -1,0 +1,5 @@
+<?php 
+
+echo "Iniciando o servidor....\n";
+
+shell_exec('php -S localhost:8000');
