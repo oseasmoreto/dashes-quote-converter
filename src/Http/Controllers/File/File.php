@@ -155,11 +155,41 @@ class File{
 
       if(!strlen($obDocument->textContent)) continue;
 
-      $content = str_replace(['“','”'], ['"','"'],$obDocument->textContent);
-
-      $this->listFilesContent[$file] = $content;
+      $this->listFilesContent[$file] = $obDocument;
     }
-    echo "<pre>"; print_r($this->listFilesContent); echo "</pre>"; exit;
+
+    return $this;
+  }
+
+  /**
+   * Método responsável por ler os arquivos html
+   * @return File
+  */
+  public function converterQuotesInDashes(){
+    $newListFiles = [];
+
+    foreach ($this->listFilesContent as $key => $obDocument) {
+      $total = preg_match_all('("(.*)")',$obDocument->textContent,$matches);
+
+      if($total == 0) continue;
+
+      $newContent = clone $obDocument;
+      $textContent = $newContent->textContent;
+      echo "<pre>"; print_r($newContent); echo "</pre>"; exit;
+      foreach ($matches[0] as $i => $line) {
+        $textContent = str_replace($line, '-- '.$matches[1][$i],$textContent);
+      }
+
+      $newContent->textContent = $textContent;
+      $newContent->textContent = '';
+      echo "<pre>objeto"; print_r($newContent->textContent); echo "</pre>";
+      echo "<pre>text"; print_r($textContent); echo "</pre>";
+
+      $newListFiles[$key] = $newContent;
+      echo "<pre>"; print_r($textContent); echo "</pre>";
+      echo "<pre>"; print_r($newContent); echo "</pre>"; exit;
+    }
+
     return $this;
   }
 }

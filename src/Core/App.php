@@ -21,7 +21,7 @@ class App {
 
       $obFile = new File('livro.epub');
 
-      $obFile->changeExtension()->extractFile()->loadFiles()->loadHtmlFile();
+      $obFile->changeExtension()->extractFile()->loadFiles()->loadHtmlFile()->converterQuotesInDashes();
 
     } catch (\Throwable $e) {
       echo "<pre>"; print_r($e); echo "</pre>"; exit;
