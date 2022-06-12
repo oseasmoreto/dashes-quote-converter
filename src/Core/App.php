@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Src\Core;
 
@@ -10,7 +10,7 @@ use Src\Http\Controllers\File\File;
 */
 
 class App {
-  
+
   /**
   * Método responsável por iniciar aplicação
   * @method init
@@ -21,7 +21,7 @@ class App {
 
       $obFile = new File('livro.epub');
 
-      $obFile->changeExtension();
+      $obFile->changeExtension()->extractFile()->loadFiles()->loadHtmlFile();
 
     } catch (\Throwable $e) {
       echo "<pre>"; print_r($e); echo "</pre>"; exit;
